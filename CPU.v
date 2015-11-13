@@ -1,0 +1,257 @@
+module CPU (Clock, Reset, Estado, SaidaPC, SaidaIR31_26, SaidaAI, SaidaBI, SaidaA, SaidaB, SaidaALU, SaidaALUOut,
+			Reg1, Reg2, SaidaRD, SaET, entrada, funct, OverControle, Over, SaidaEPC, SaidaMDR, SaidaMDRI, EntradaMem, SaidaMem, 
+			SaE, divhi, divlo, highin, highout, lowin, lowout, n, e, EntradaBALU);
+input Clock;
+input Reset;
+
+output wire [5:0] Estado;
+output wire [31:0] SaidaPC;
+output wire [5:0] SaidaIR31_26;
+output wire [31:0] SaidaAI;
+output wire [31:0] SaidaBI;
+output wire [31:0] SaidaA;  
+output wire [31:0] SaidaB;
+output wire [31:0] SaidaALU;
+output wire [31:0] SaidaALUOut;
+output wire [31:0] Reg1;
+output wire [31:0] Reg2;
+output wire [31:0] SaidaRD;
+output wire SaET;
+output wire [31:0] entrada;
+output wire [5:0] funct;
+output wire Over;
+output wire OverControle;
+output wire [31:0] SaidaEPC;
+output wire [31:0] SaidaMDR;
+output wire [31:0] SaidaMDRI;
+output wire [31:0] EntradaMem;
+output wire [31:0] SaidaMem;
+output wire SaE;
+output wire [31:0] divhi;
+output wire [31:0] divlo;
+output wire [31:0] lowin;
+output wire [31:0] lowout;
+output wire [31:0] highin;
+output wire [31:0] highout;
+output wire [5:0] n;
+output wire e;
+output wire [31:0] EntradaBALU;
+
+
+wire [31:0] MuxExit;
+wire PCWrite;
+wire [31:0] WPC;
+wire [31:0] WAI;
+wire [31:0] WAluOut;
+wire [2:0] IorD;
+wire [31:0] WMemIn;
+wire [31:0] WMemOut;
+wire MemRead;
+wire [7:0] WMemOutBIn;
+wire [15:0] WMemOutHIn;
+wire [31:0] WMemOutBOut;
+wire [31:0] WMemOutHOut;
+wire [1:0] MDRCtrl;
+wire [31:0] WStoreIn;
+wire [31:0] WStoreOut;
+wire WriteDataCtrl;
+wire StoreCtrl;
+wire [31:0] WB;
+wire [31:0] WMDR;
+wire IRWrite;
+wire [5:0] WOpcode;
+wire [4:0] WRS;
+wire [4:0] WRT;
+wire [15:0] WDesloc;
+wire [31:0] WMDRI;
+wire MDR;
+wire [5:0] W10_6;
+wire [31:0] WSEOut;
+wire [2:0] MuxReg2;
+wire [3:0] MuxReg1;
+wire [4:0] W15_11;
+wire [31:0] WSL16In;
+wire [31:0] WSL16Out;
+wire [31:0] WA;
+wire [31:0] WBI;
+wire [4:0] WB4_0;
+wire ShamtSrc;
+wire RDCtrl;
+wire [31:0] WSL2;
+wire [2:0] Shift;
+wire [31:0] WRDCtrlOut;
+wire [4:0] WShamtSrcOut;
+wire WriteReg;
+wire [1:0] AluSrcA;
+wire [2:0] AluSrcB;
+wire [31:0] WAluSrcA;
+wire [31:0] WAluSrcB;
+wire [31:0] WRD;
+wire MultIn;
+wire MultOut;
+wire DivIn;
+wire DivOut;
+wire DivZero;
+wire [25:0] W25_0;
+wire [27:0] W27_0;
+wire [31:0] WCPC;
+wire WEt;
+wire WGt;
+wire WLt;
+wire [31:0] WLtOut;
+wire [31:0] WResultHighMul;
+wire [31:0] WResultHighDiv;
+wire [31:0] WResultLowMul;
+wire [31:0] WResultLowDiv;
+wire HighCtrl;
+wire LowCtrl;
+wire [31:0] WHighIn;
+wire [31:0] WHighOut;
+wire [31:0] WLowIn;
+wire [31:0] WLowOut;
+wire [31:0] WAlu;
+wire AluOutCtrl;
+wire [2:0] AluCtrl; 
+wire [2:0] BigMux;
+wire EPCCtrl;
+wire [31:0] WEPC;
+wire OpcodeInexistente;
+wire ResetPC;
+wire ResetMDR;
+wire SetA;
+wire ResetA;
+wire SetB;
+wire ResetB;
+wire SetHigh;
+wire ResetHigh;
+wire SetLow;
+wire ResetLow;
+wire ResetAluOut;
+wire ResetEPC;
+wire ResetDiv;
+wire ResetMult;
+wire [31:0] MuxReg1Out;
+wire [31:0] MuxReg2Out;
+wire [5:0] StateOut;
+wire [5:0] W5_0;
+wire NegativoULA;
+wire ZeroULA;
+wire ec;
+wire OverflowULA;
+
+assign WMemOutBIn = WMemOut[7:0];
+assign WMemOutHIn = WMemOut[15:0];
+assign W10_6 = WDesloc[10:6];
+assign W5_0 = WDesloc[5:0];
+assign WB4_0 = WB[4:0];
+assign W15_11 = WDesloc[15:11];
+
+assign WCPC = {WPC[31:28], W27_0};
+assign W25_0 = {WRS, WRT, WDesloc};
+
+					
+Controle controle (Clock, Reset, WOpcode, W5_0, PCWrite, IorD, StoreCtrl, WriteDataCtrl, MemRead,MDRCtrl, IRWrite, MDR, MuxReg1, MuxReg2, 
+					RDCtrl, ShamtSrc, WriteReg, Shift, AluSrcA, AluSrcB, OverflowULA, WEt, WGt, WLt, MultIn, MultOut, DivIn, DivOut, DivZero,
+					BigMux, HighCtrl, LowCtrl, AluCtrl, AluOutCtrl, EPCCtrl, ResetPC, ResetMDR, SetA, ResetA, SetB, ResetB, SetHigh, 
+					ResetHigh, SetLow, ResetLow, ResetAluOut, ResetEPC, StateOut, ResetMult, ResetDiv);
+					
+Registrador RPC (Clock,	ResetPC, PCWrite, MuxExit, WPC);
+Registrador RMDR (Clock, ResetMDR, MDR, WMDRI, WMDR);
+Registrador RA (Clock, ResetA, SetA, WAI, WA);
+Registrador RB (Clock, ResetB, SetB, WBI, WB);
+Registrador RAluOut (Clock, ResetAluOut, AluOutCtrl, WAlu, WAluOut);
+Registrador REPC (Clock, ResetEPC, EPCCtrl, WAlu, WEPC);
+Registrador RHigh (Clock, ResetHigh, SetHigh, WHighIn, WHighOut);
+Registrador RLow (Clock, ResetLow, SetLow, WLowIn, WLowOut);
+
+//Mux
+
+IorDMux MIorD(IorD, WPC, WAI, WAluOut, WMemIn);
+MuxMDR MMDR(MDRCtrl, WMemOut, WMemOutBOut, WMemOutHOut, WMDRI);
+MuxRegDes1 MRegDes1 (RDCtrl, WBI, WAI, WRDCtrlOut);
+MuxLowControl MLowCtrl (LowCtrl, WResultLowMul, WResultLowDiv, WLowIn);
+MuxHighControl MHighCtrl (HighCtrl, WResultHighMul, WResultHighDiv, WHighIn);
+MuxBigMux MBigMux (BigMux, WMDRI, WAlu, WPC, WAluOut, WCPC, WEPC, MuxExit);
+MuxALUSourceB MAluSrcB (AluSrcB, WB, WSEOut, WSL2, WRD, WAluSrcB);
+MuxALUSourceA MAluSrcA (AluSrcA, WPC, WMDR, WA, WAluSrcA);
+MuxStore MStore (WriteDataCtrl, WStoreIn, WB, WStoreOut);
+MuxRegUm MRegUm (MuxReg1, WAluOut, WHighOut, WLowOut, WMDR, WRD, WLtOut, WPC, WSL16Out, MuxReg1Out);
+MuxRegDes2 WRD2 (ShamtSrc, W10_6, WB4_0, WShamtSrcOut);
+MuxRegDois MRegDois(MuxReg2, WRT, W15_11, MuxReg2Out);
+
+Divisao div (WB, WA, WResultHighDiv, WResultLowDiv, DivIn, DivOut, DivZero, Clock, ResetDiv);
+Multiplicador mult (WA, WB, WResultHighMul, WResultLowMul, MultIn, MultOut, Clock, ResetMult);
+
+UnsignedExtend32 UE1_32 (WLt, WLtOut);
+UnsignedExtend16 UE16_32 (WMemOutHIn, WMemOutHOut);
+UnsignedExtend8 UE8_32 (WMemOutBIn, WMemOutBOut);
+
+StoreControl Store (StoreCtrl, WMDR, WB, WStoreIn);
+
+SignedExtend SE (WDesloc, WSEOut);
+
+ShiftLeft16 SSL16(WSEOut, WSL16Out);
+
+ShiftLeft2Conc SSL2C (W25_0, W27_0);
+
+ShiftLeft2 SSL2(WSEOut, WSL2);
+
+Banco_reg BR (Clock, Reset, WriteReg, WRS, WRT, MuxReg2Out, MuxReg1Out, WAI, WBI);
+
+Instr_Reg IR (Clock, Reset, IRWrite, WMemOut, WOpcode, WRS, WRT, WDesloc);
+
+Memoria Mem (WMemIn, Clock, MemRead, WStoreOut, WMemOut);
+
+RegDesloc RD (Clock, Reset, Shift, WShamtSrcOut, WRDCtrlOut, WRD);
+
+ula32 ULA (WAluSrcA, WAluSrcB, AluCtrl, WAlu, OverflowULA, NegativoULA, ZeroULA, WEt, WGt, WLt);
+
+assign Estado = StateOut;
+assign SaidaPC = WPC;
+assign EntradaMem = WMemIn;
+assign SaidaMem = WMemOut;
+assign SaidaIR31_26 = WOpcode;
+assign SaidaIR25_21 = WRS;
+assign SaidaIR20_16 = WRT;
+assign SaidaIR15_0 = WDesloc;
+assign SaidaMDRI = WMDRI;
+assign SaidaMDR = WMDR;
+assign SaidaAI = WAI;
+assign SaidaBI = WBI;
+assign SaidaA = WA;
+assign SaidaB = WB;
+assign SaidaRD = WRD;
+assign SaidaALU = WAlu;
+assign SaidaALUOut = WAluOut;
+assign SaidaEPC = WEPC;
+assign SaidaBigMux = MuxExit;
+assign SaidaHigh = WHighOut;
+assign SaidaLow = WLowOut;
+assign SaidaStore = WStoreIn;
+assign Reg1 = MuxReg1Out;
+assign Reg2 = MuxReg2Out;
+assign gt = WGt;
+assign entrada = WRDCtrlOut;
+assign funct = W5_0;
+assign OverControle = ec;
+assign Over = OverflowULA;
+assign SaET = WEt;
+assign SaE = ec;
+assign highin = WHighIn;
+assign highout = WHighOut;
+assign lowin = WLowIn;
+assign lowout = WLowOut;
+assign reh = WResultHighMul;
+assign rel = WResultLowMul;
+assign min = MultIn;
+assign mout = MultOut;
+assign divhi = WResultHighDiv;
+assign divlo = WResultLowDiv;
+assign n = WShamtSrcOut;
+assign e = WEt;
+assign eC = ec;
+assign EntradaBALU = WAluSrcB;
+
+endmodule
+
+
