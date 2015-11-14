@@ -1,5 +1,5 @@
 module MuxMDR(Controle, Normal, Byte, HalfWord, mux_out);
-
+//não precisa
 input [1:0] Controle;
 input [31:0] Normal;
 input [31:0] Byte;

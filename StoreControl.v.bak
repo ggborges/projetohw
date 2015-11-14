@@ -10,7 +10,7 @@ begin
 if(StrCtrl == 1'd0) 
 begin
 
-Out[31:24] = MDR[31:24];
+Out[31:8] = MDR[31:8];
 Out[7:0] = B[7:0];
 
 end 
