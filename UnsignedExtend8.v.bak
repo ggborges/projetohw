@@ -1,5 +1,5 @@
 module UnsignedExtend8(In, Out);
-//load byte --- feito
+
 input [7:0] In;
 output [31:0] Out;
 

@@ -1,4 +1,4 @@
-module MuxRegDes1(InShiftReg, B, A, mux_out);
+module MuxRegDeslocamento1(InShiftReg, B, A, mux_out);
 //feito
 input InShiftReg;
 input [31:0] A;

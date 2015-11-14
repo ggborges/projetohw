@@ -2,9 +2,9 @@ module MuxALUSourceB(ALUSrcB, B, Inst, InstShift, RegDes, mux_out);
 
 input [2:0] ALUSrcB;
 input [31:0] B;
-input [31:0] Immediate;
-input [31:0] ImmediateShift;
-input [31:0] R;
+input [31:0] Inst;
+input [31:0] InstShift;
+input [31:0] RegDes;
 output reg [31:0] mux_out;
 
 always @ (ALUSrcB)

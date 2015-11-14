@@ -1,6 +1,6 @@
-module MuxRegUm(MuxReg1, AluOut, High, Low, MDR, RegDes, LT, PC, SL16, mux_out);
+module MuxRegUm(MemtoReg, AluOut, High, Low, MDR, RegDes, LT, PC, SL16, mux_out);
 
-input [3:0] MuxReg1;
+input [3:0] MemtoReg;
 input [31:0] AluOut;
 input [31:0] High;
 input [31:0] Low;

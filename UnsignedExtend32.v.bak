@@ -1,5 +1,5 @@
 module UnsignedExtend32(In, Out);
-//LT --- feito
+
 input In;
 output [31:0] Out;
 

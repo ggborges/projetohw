@@ -1,5 +1,5 @@
 module UnsignedExtend16(In, Out);
-//load half --- feito
+
 input [15:0] In;
 output [31:0] Out;
 

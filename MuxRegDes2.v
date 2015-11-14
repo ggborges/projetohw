@@ -1,16 +1,16 @@
-module MuxRegDes2(Controle, Inst, B, mux_out);
-
-input Controle;
-input [4:0] Inst;
+module MuxRegDes2(NShiftReg, Inst, B, mux_out);
+//feito
+input NShiftReg;
 input [4:0] B;
+input [4:0] shamt;
 output reg [4:0] mux_out;
 
-always @ (Controle)
+always @ (NShiftReg)
 begin
 
-case(Controle)
-1'd0:mux_out <= Inst;
-1'd1:mux_out <= B;
+case(NShiftReg)
+1'd0:mux_out <= B;
+1'd1:mux_out <= shamt;
 endcase
 
 end

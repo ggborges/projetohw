@@ -14,7 +14,7 @@ output reg [31:0] mux_out;
 always @ (MuxReg1)
 begin
 
-case(MuxRegUm)
+case(MuxReg1)
 4'd0:mux_out <= AluOut;
 4'd1:mux_out <= High;
 4'd2:mux_out <= Low;

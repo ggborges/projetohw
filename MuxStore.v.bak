@@ -1,11 +1,11 @@
-module MuxStore(WriteDataControl, StoreControl, B, mux_out);
-//feito
-input WriteDataControl;
+module MuxStore(StoreCtrl, StoreControl, B, mux_out);
+
+input StoreCtrl;
 input [31:0] StoreControl;
 input [31:0] B;
 output reg [31:0] mux_out;
 
-always @ (WriteDataControl)
+always @ (StoreCtrl)
 begin
 
 case(StoreCtrl)

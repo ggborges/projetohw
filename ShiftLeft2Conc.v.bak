@@ -1,5 +1,5 @@
 module ShiftLeft2Conc(In, Out);
-//jump --- feito
+
 input [25:0] In;
 output [27:0] Out;
 

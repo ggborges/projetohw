@@ -1,5 +1,5 @@
 module StoreControl(SCControl, MDR, B, Out);
-
+//feito
 input SCControl;
 input [31:0] MDR;
 input [31:0] B;

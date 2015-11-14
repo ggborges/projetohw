@@ -1,5 +1,5 @@
 module MuxBigMux(PCSource, Alu, AluOut, Inst, EPC, mux_out);
-
+//feito
 input [1:0] PCSource;
 input [31:0] Alu;
 input [31:0] AluOut;
