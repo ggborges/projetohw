@@ -139,8 +139,8 @@ wire ZeroULA;
 wire ec;
 wire OverflowULA;
 
-assign WMemOutBIn = WMemOut[31:24];
-assign WMemOutHIn = WMemOut[31:16];
+assign WMemOutBIn = WMemOut[7:0];
+assign WMemOutHIn = WMemOut[15:0];
 assign W10_6 = WDesloc[10:6];
 assign W5_0 = WDesloc[5:0];
 assign WB4_0 = WB[4:0];

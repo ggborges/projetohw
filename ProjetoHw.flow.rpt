@@ -1,6 +1,6 @@
 Flow report for ProjetoHw
-Fri Nov 13 20:15:53 2015
-Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
+Thu Jan 16 23:10:18 2014
+Quartus II Version 9.1 Build 222 10/21/2009 SJ Web Edition
 
 
 ---------------------
@@ -19,7 +19,7 @@ Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
 ----------------
 ; Legal Notice ;
 ----------------
-Copyright (C) 1991-2010 Altera Corporation
+Copyright (C) 1991-2009 Altera Corporation
 Your use of Altera Corporation's design tools, logic functions 
 and other software and tools, and its AMPP partner logic 
 functions, and any output files from any of the foregoing 
@@ -35,26 +35,26 @@ applicable agreement for further details.
 
 
 
-+------------------------------------------------------------------------------+
-; Flow Summary                                                                 ;
-+-------------------------------+----------------------------------------------+
-; Flow Status                   ; Flow Failed - Fri Nov 13 20:15:53 2015       ;
-; Quartus II Version            ; 9.1 Build 350 03/24/2010 SP 2 SJ Web Edition ;
-; Revision Name                 ; ProjetoHw                                    ;
-; Top-level Entity Name         ; CPU                                          ;
-; Family                        ; Stratix II                                   ;
-; Met timing requirements       ; N/A                                          ;
-; Logic utilization             ; N/A                                          ;
-;     Combinational ALUTs       ; 2,950                                        ;
-;     Dedicated logic registers ; 1,788                                        ;
-; Total registers               ; 1788                                         ;
-; Total pins                    ; 767                                          ;
-; Total virtual pins            ; 0                                            ;
-; Total block memory bits       ; 8,192                                        ;
-; DSP block 9-bit elements      ; 0                                            ;
-; Total PLLs                    ; 0                                            ;
-; Total DLLs                    ; 0                                            ;
-+-------------------------------+----------------------------------------------+
++-------------------------------------------------------------------------+
+; Flow Summary                                                            ;
++-------------------------------+-----------------------------------------+
+; Flow Status                   ; Successful - Thu Jan 16 23:10:18 2014   ;
+; Quartus II Version            ; 9.1 Build 222 10/21/2009 SJ Web Edition ;
+; Revision Name                 ; ProjetoHw                               ;
+; Top-level Entity Name         ; CPU                                     ;
+; Family                        ; Stratix II                              ;
+; Met timing requirements       ; N/A                                     ;
+; Logic utilization             ; N/A                                     ;
+;     Combinational ALUTs       ; 2,950                                   ;
+;     Dedicated logic registers ; 1,788                                   ;
+; Total registers               ; 1788                                    ;
+; Total pins                    ; 767                                     ;
+; Total virtual pins            ; 0                                       ;
+; Total block memory bits       ; 8,192                                   ;
+; DSP block 9-bit elements      ; 0                                       ;
+; Total PLLs                    ; 0                                       ;
+; Total DLLs                    ; 0                                       ;
++-------------------------------+-----------------------------------------+
 
 
 +-----------------------------------------+
@@ -62,7 +62,7 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 11/13/2015 20:15:16 ;
+; Start date & time ; 01/16/2014 23:09:41 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; ProjetoHw           ;
 +-------------------+---------------------+
@@ -73,7 +73,7 @@ applicable agreement for further details.
 +------------------------------------+--------------------------------------------------------------------+---------------+-------------+----------------+
 ; Assignment Name                    ; Value                                                              ; Default Value ; Entity Name ; Section Id     ;
 +------------------------------------+--------------------------------------------------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID              ; 114448682540239.144745291601636                                    ; --            ; --          ; --             ;
+; COMPILER_SIGNATURE_ID              ; 136477535853.138992458032116                                       ; --            ; --          ; --             ;
 ; MISC_FILE                          ; C:/Users/Haack/Desktop/Faculdade/Projeto de hardware/ProjetoHw.dpf ; --            ; --          ; --             ;
 ; PARTITION_COLOR                    ; 16764057                                                           ; --            ; CPU         ; Top            ;
 ; PARTITION_NETLIST_TYPE             ; SOURCE                                                             ; --            ; CPU         ; Top            ;
@@ -87,9 +87,8 @@ applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:31     ; 1.0                     ; 291 MB              ; 00:00:26                           ;
-; Fitter               ; 00:00:01     ; 1.0                     ; 197 MB              ; 00:00:00                           ;
-; Total                ; 00:00:32     ; --                      ; --                  ; 00:00:26                           ;
+; Analysis & Synthesis ; 00:00:38     ; 1.0                     ; 276 MB              ; 00:00:32                           ;
+; Total                ; 00:00:38     ; --                      ; --                  ; 00:00:32                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -98,8 +97,7 @@ applicable agreement for further details.
 +----------------------+------------------+---------------+------------+----------------+
 ; Module Name          ; Machine Hostname ; OS Name       ; OS Version ; Processor type ;
 +----------------------+------------------+---------------+------------+----------------+
-; Analysis & Synthesis ; Victor           ; Windows Vista ; 6.2        ; x86_64         ;
-; Fitter               ; Victor           ; Windows Vista ; 6.2        ; x86_64         ;
+; Analysis & Synthesis ; Haack-PC         ; Windows Vista ; 6.1        ; x86_64         ;
 +----------------------+------------------+---------------+------------+----------------+
 
 
@@ -107,7 +105,6 @@ applicable agreement for further details.
 ; Flow Log ;
 ------------
 quartus_map --read_settings_files=on --write_settings_files=off ProjetoHw -c ProjetoHw
-quartus_fit --read_settings_files=off --write_settings_files=off ProjetoHw -c ProjetoHw
 
 
 
